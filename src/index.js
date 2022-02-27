@@ -27,6 +27,45 @@ const feedback = (state = {
             feeling: feeling
         }
     }
+    else if (action.type === 'SET_UNDERSTANDING') {
+        console.log('payload', action.payload);
+
+        const {understanding} = action.payload;
+
+        return {
+            ...state,
+            understanding: understanding
+        }
+    }
+    else if (action.type === 'SET_SUPPORT') {
+        console.log('payload', action.payload);
+
+        const {support} = action.payload;
+
+        return {
+            ...state,
+            support: support
+        }
+    }
+    else if (action.type === 'SET_COMMENTS') {
+        console.log('payload', action.payload);
+
+        const {comments} = action.payload;
+
+        return {
+            ...state,
+            comments: comments
+        }
+    }
+    else if (action.type === 'RESET') {
+        return {
+            feeling: '',
+            understanding: '',
+            support: '',
+            comments: '', 
+        }
+    }
+
     return state;
 }
 

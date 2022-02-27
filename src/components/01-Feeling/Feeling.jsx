@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -7,8 +8,9 @@ function Feeling() {
 
     const dispatch = useDispatch();
     const history = useHistory();
+    const feeling = useSelector(store => store.feedback.feeling)
 
-    const [userInput, setUserInput] = useState('')
+    const [userInput, setUserInput] = useState(feeling)
 
     const handleClickNext = (e) => {
         e.preventDefault();
@@ -18,20 +20,23 @@ function Feeling() {
                 feeling: userInput,
             }
         })
-        // history.push('/Understanding')
+        history.push('/Understanding')
     }
 
     return (
         <>
             <h1>How are you feeling today?</h1>
-            <input 
-                type='text'
-                label='Feeling'
-                placeholder='Value 1 - 10'
-                value={userInput}
-                onChange={(e) => setUserInput(e.target.value)}
-            />
-            <button onClick={handleClickNext}>NEXT</button>
+            <form onSubmit={handleClickNext}>
+                <input
+                    required
+                    type='number'
+                    label='Feeling'
+                    placeholder='Value 1 - 5'
+                    value={userInput}
+                    onChange={(e) => setUserInput(e.target.value)}
+                />
+                <input type="submit" value="NEXT" />
+            </form>
         </>
     )
 }

@@ -1,7 +1,7 @@
 [X] INSTALL
 [X] Create DB
 [X] Create Components 
-[] Create 1st View
-[] Create Reducer
-[] TEST
-[] REPEAT
+[x] Create 1st View
+[x] Create Reducer
+[x] TEST
+[x] REPEAT

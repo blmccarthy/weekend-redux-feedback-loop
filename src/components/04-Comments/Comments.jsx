@@ -4,32 +4,31 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 
-function Support() {
+function Comments() {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    const support = useSelector(store => store.feedback.support)
+    const comments = useSelector(store => store.feedback.comments)
 
-    const [userInput, setUserInput] = useState(support)
+    const [userInput, setUserInput] = useState(comments)
 
     const handleClickNext = (e) => {
         e.preventDefault();
         dispatch({
-            type: 'SET_SUPPORT',
+            type: 'SET_COMMENTS',
             payload: {
-                support: userInput,
+                comments: userInput,
             }
         })
-        history.push('/Comments')
+        history.push('/Review')
     }
 
     return (
         <>
-            <h1>How well are you being supported?</h1>
+            <h1>Any comments you want to leave?</h1>
             <form onSubmit={handleClickNext}>
                 <input
-                    required
-                    type='number'
+                    type='text'
                     label='Support'
                     placeholder='Value 1 - 5'
                     value={userInput}
@@ -41,4 +40,4 @@ function Support() {
     )
 }
 
-export default Support;
+export default Comments;
