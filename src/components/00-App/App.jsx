@@ -33,11 +33,9 @@ function App() {
         <Comments />
       </Route>
       <Route path='/Review' exact>
-        <Header />
         <Review />
       </Route>
       <Route path='/ThankYou' exact>
-        <Header />
         <ThankYou />
       </Route>
     </Router>

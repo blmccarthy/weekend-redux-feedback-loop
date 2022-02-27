@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
+import { TextField, Button } from '@mui/material';
+import Swal from 'sweetalert2';
 
 function Support() {
 
@@ -14,6 +16,15 @@ function Support() {
 
     const handleClickNext = (e) => {
         e.preventDefault();
+        if (userInput < 1 || userInput > 5) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please enter a valid number between 1 - 5',
+                confirmButtonColor: '#3085d6',
+            });
+            return;
+        }
         dispatch({
             type: 'SET_SUPPORT',
             payload: {
@@ -27,15 +38,19 @@ function Support() {
         <>
             <h1>How well are you being supported?</h1>
             <form onSubmit={handleClickNext}>
-                <input
+            <TextField
                     required
-                    type='number'
-                    label='Support'
-                    placeholder='Value 1 - 5'
                     value={userInput}
+                    type='number'
+                    // label='Support'
+                    variant="standard"
                     onChange={(e) => setUserInput(e.target.value)}
                 />
-                <input type="submit" value="NEXT" />
+                <br/><br/>
+                {/* <input type="submit" value="NEXT" /> */}
+                <Button variant="contained" color="primary" type="submit">
+                    Next
+                </Button>
             </form>
         </>
     )
