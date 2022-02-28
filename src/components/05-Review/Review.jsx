@@ -29,56 +29,9 @@ function Review() {
         history.push('/ThankYou')
     }
 
-    const handleEdit = (e) => {
-        e.preventDefault();
-        console.log('in handleEdit', e.target.className);
-        const page = e.target.className;
-        history.push(`/${page}`)
-    }
-
     return (
         <>
             <h1>Review Your Feedback</h1>
-            <div>
-                Feelings: {feedback.feeling}
-                <Button
-                    className=""
-                    onClick={handleEdit}
-                    variant="outlined"
-                >Edit
-                </Button>
-            </div>
-            <div>
-                Understanding: {feedback.understanding}
-                <Button
-                    className="Understanding"
-                    onClick={handleEdit}
-                    variant="outlined"
-                >Edit
-                </Button>
-            </div>
-            <div>
-                Support: {feedback.support}
-                <Button
-                    className="Support"
-                    onClick={handleEdit}
-                    variant="outlined"
-                >Edit
-                </Button>
-            </div>
-            <div>
-                Comments: {feedback.comments}
-                <Button
-                    className="Comments"
-                    onClick={handleEdit}
-                    variant="outlined"
-                >Edit
-                </Button>
-            </div>
-            {/* <button onClick={submitFeedback}>SUBMIT</button> */}
-
-            <br /><br />
-
             <div
                 style={{
                     maxWidth: '70%',
@@ -101,8 +54,7 @@ function Review() {
                                 <TableCell align="right">{feedback.feeling}</TableCell>
                                 <TableCell align="right">
                                     <Button
-                                        className=""
-                                        onClick={handleEdit}
+                                        onClick={() => history.push('/')}
                                         variant="outlined"
                                     >Edit
                                     </Button>
@@ -113,8 +65,7 @@ function Review() {
                                 <TableCell align="right">{feedback.understanding}</TableCell>
                                 <TableCell align="right">
                                     <Button
-                                        className="Understanding"
-                                        onClick={handleEdit}
+                                        onClick={() => history.push('/Understanding')}
                                         variant="outlined"
                                     >Edit
                                     </Button>
@@ -125,8 +76,7 @@ function Review() {
                                 <TableCell align="right">{feedback.support}</TableCell>
                                 <TableCell align="right">
                                     <Button
-                                        className="Support"
-                                        onClick={handleEdit}
+                                        onClick={() => history.push('/Support')}
                                         variant="outlined"
                                     >Edit
                                     </Button>
@@ -137,8 +87,7 @@ function Review() {
                                 <TableCell align="right">{feedback.comments}</TableCell>
                                 <TableCell align="right">
                                     <Button
-                                        className="Comments"
-                                        onClick={handleEdit}
+                                        onClick={() => history.push('/Comments')}
                                         variant="outlined"
                                     >Edit
                                     </Button>
@@ -150,6 +99,7 @@ function Review() {
             </div>
 
             <br /><br />
+
             <Button
                 onClick={submitFeedback}
                 variant="contained"
